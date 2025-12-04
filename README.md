@@ -1,5 +1,8 @@
 # Project 5: Music
 
+## Colour palette
+https://coolors.co/palette/250902-38040e-640d14-800e13-ad2831
+
 ## Introductie
 
 Muziekwinkel "De Notenkraker" wil graag een applicatie om haar leden te kunnen registeren en bij te kunnen houden. Daarnaast willen ze de verschillende muziekalbums die ze aanbieden dynamisch kunnen tonen op de site.
