@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+}
+
+nav {
+  background-color: #FFFF64;
+  display: flex;              /* Make nav a flex container */
+  /* align-items: center;        Vertically center children */
+  padding: 0.5rem 1rem;
+}
+
+.logo {
+  scale: 1.3;
+  margin-left: 1rem;
+  margin-right: 2rem;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; /* Align links horizontally */
+  align-items: center;         /* Vertically center list items */
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+nav ul li a {
+  display: block;
+  color: rgb(0, 0, 0);
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+nav div.admin-dashboard_button{
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: #000000;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+nav div.logout_button{
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    margin-left: 65rem;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav div.signup_button{
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: #000000;
+    margin-left: 72rem;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav div.login_button{
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: #000000;
+    margin-left: -1rem;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
