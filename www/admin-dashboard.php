@@ -7,11 +7,11 @@ if($_SESSION['role'] != 'admin') {
 
 include 'database.php';
 
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM User";
 $result = mysqli_query($conn, $sql);
 $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-$sql = "SELECT * FROM music";
+$sql = "SELECT * FROM Album";
 $result2 = mysqli_query($conn, $sql);
 $music = mysqli_fetch_all($result2, MYSQLI_ASSOC);
 ?>
@@ -44,10 +44,10 @@ $music = mysqli_fetch_all($result2, MYSQLI_ASSOC);
         <tbody>
             <?php foreach($users as $user): ?>
             <tr>
-                <td><?php echo htmlspecialchars($user['id']); ?></td>
-                <td><?php echo htmlspecialchars($user['username']); ?></td>
+                <td><?php echo ($user['id']); ?></td>
+                <td><?php echo ($user['username']); ?></td>
                 <td><?php if(isset($user['role'])) echo ($user['role']); 
-                else echo "N/A"; ?></td>
+                else echo "NULL"; ?></td>
                 <td>
                     <a href="user_details.php?id=<?php echo ($user['id']); ?>" class="details-link">View Details</a>
                 </td>
@@ -57,7 +57,7 @@ $music = mysqli_fetch_all($result2, MYSQLI_ASSOC);
     </table>
 
     <div>aantal gebruikers: <?php echo count($users); ?></div>
-    <div>aantal muziekstukken: <?php echo count($music); ?></div>
+    <div>aantal albums: <?php echo count($music); ?></div>
 </div>
 
 </body>

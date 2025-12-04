@@ -1,33 +1,56 @@
 <?php
+// Minimal login handler: start session, check POST, query users, compare plaintext password,
+// set session role and redirect. Keeps things very simple per request.
 
-if(isset($_SESSION['role'])){
-    header("location: dashboard.php");
+session_start();
+
+// if already logged in, go to dashboard
+if (isset($_SESSION['role'])) {
+    header('Location: dashboard.php');
     exit;
 }
 
-session_start();
+// require POST fields
+if (!isset($_POST['username'], $_POST['password'])) {
+    header('Location: login.php');
+    exit;
+}
 
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-require 'database.php';
 
-$sql = "SELECT * FROM users WHERE username = '$username'";
+
+include 'database.php';
+
+// simple query (table name 'users')
+$sql = "SELECT * FROM User WHERE username = '$username'";
 $result = mysqli_query($conn, $sql);
+
+if (!$result) {
+    // query failed — go back to login
+    header('Location: login.php');
+    exit;
+}
 
 $user = mysqli_fetch_assoc($result);
 
-if(is_array($user)){
-    if($password == $user['password']){
+if ($user) {
+    // support hashed passwords in DB
+    if ($password === $user['password']) {
+        // set minimal session flag
         $_SESSION['role'] = $user['role'];
-        header("location: dashboard.php");
-        echo "Login succesvol!";
-        
+        $_SESSION['firstname'] = $user['firstname'];
+        $_SESSION['lastname'] = $user['lastname'];
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['password'] = $user['password'];
+        $_SESSION['logged'] = true;
+        header('Location: dashboard.php');
         exit;
     }
-} else {
-    
-    echo "Email is bij ons onbekend";
-
-    exit;
 }
+
+// fallback: any failure returns to login
+header('Location: login.php');
+exit;

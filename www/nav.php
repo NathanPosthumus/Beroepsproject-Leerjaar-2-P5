@@ -1,3 +1,5 @@
+
+
 <nav>
     <ul>
         <li class="logo"><a href="#">[ Project 5 Music ]</a></li>
@@ -12,8 +14,17 @@
         <div class="login_button" onclick="location.href='login.php'">[ Login ]</div>
     <?php else: ?>
         <div class="logout_button" onclick="location.href='logout.php'">[ Logout ]</div>
-    <?php if ($_SESSION['role'] === 'admin'): ?>
+    <?php if ($_SESSION['role'] === 'worker'): ?>
         <div class="admin-dashboard_button" onclick="location.href='admin-dashboard.php'">[ Admin Dashboard ]</div>
     <?php endif; ?>
     <?php endif; ?>
+    <?php
+
+    $logged = $_SESSION['logged'] ?? false;   
+    $firstname = $_SESSION['firstname'] ?? ''; 
+
+    if ($logged) {
+    echo '<div class="admin-dashboard_button">Welcome, ' . $firstname . '!</div>';
+    }
+    ?>
 </nav>

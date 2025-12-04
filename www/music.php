@@ -2,16 +2,17 @@
 
 session_start(); 
 
-if(!isset($_SESSION['role'])) {
-    header("location: login.php");
-    exit;
-}
+// if(!isset($_SESSION['role'])) {
+//     header("location: login.php");
+//     exit;
+// }
 
 include 'database.php';
 
-$sql = "SELECT * FROM music";
+$sql = "SELECT * FROM Album";
 $result = mysqli_query($conn, $sql);
-$music = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$albums = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
 
 ?>
 
@@ -30,26 +31,43 @@ $music = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <h1>Music Page</h1>
         <p>Welcome to the music page!</p>
 
+        <form method="GET" action="">
+            <input type="text" name="search" placeholder="zoeken">
+            <button type="submit">Search</button>
+        </form>
+
         <table>
-        <tr>
-            <th>song_name</th>
-            <th>release_date</th>
-            <th>genre</th>
-            <th>singer</th>
-            <th>actions</th>
-        </tr>
-        <?php foreach($music as $track): ?>
-        <tr>
-            <td><?php echo $track['song_name']; ?></td>
-            <td><?php echo $track['release_date']; ?></td>
-            <td><?php echo $track['genre']; ?></td>
-            <td><?php echo $track['singer']; ?></td>
-            <td>
-                <a href="detail-music.php?id=<?php echo $track['id']; ?>">details</a>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-        </table>
+    <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Genre</th>
+        <th>Release Year</th>
+        <th>Price</th>
+        <th>Tracks</th>
+        <th>Image</th>
+        <th>Added At</th>
+        <th>Actions</th>
+    </tr>
+
+    <?php foreach($albums as $album): ?>
+    <tr>
+        <td><?php echo $album['title']; ?></td>
+        <td><?php echo $album['artist']; ?></td>
+        <td><?php echo $album['genre']; ?></td>
+        <td><?php echo $album['release_year']; ?></td>
+        <td><?php echo "$" . $album['price']; ?></td>
+        <td><?php echo $album['tracks']; ?></td>
+        <td><?php echo $album['image']; ?></td>
+        <td><?php echo $album['added_at']; ?></td>
+
+        <td>
+            <a href="detail-music.php?id=<?php echo $album['id']; ?>">details</a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+
+</table>
+
     </div>
     
 </body>

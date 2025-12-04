@@ -10,6 +10,9 @@
 /// check of alles is ingevuld
 if(
     !isset(
+        $_POST['firstname'],
+        $_POST['lastname'],
+        $_POST['email'],
         $_POST['username'],
         $_POST['password'],
     )
@@ -19,21 +22,30 @@ if(
 
 // check of niks leeg is
 if(
+    empty($_POST['firstname']) ||
+    empty($_POST['lastname']) ||
+    empty($_POST['email']) ||
     empty($_POST['username']) ||
     empty($_POST['password'])
 ) {
     die("Please fill in all required fields.");
 }
 
-// strlen + validatie controleren
+// optioneel: check max lengte
 if(
-    strlen($_POST['username']) > 20 ||
-    strlen($_POST['password']) > 20
+    strlen($_POST['firstname']) > 50 ||
+    strlen($_POST['lastname']) > 50 ||
+    strlen($_POST['email']) > 50 ||
+    strlen($_POST['username']) > 50 ||
+    strlen($_POST['password']) > 50
 ) {
     die("info die gegeven is is te lang of onjuist.");
 }
 
 // waardes opslaan
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$email = $_POST['email'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
@@ -41,8 +53,8 @@ $password = $_POST['password'];
 
 require 'database.php';
 
-$sql = "INSERT INTO users (username, password) 
-        VALUES ('$username', '$password')";
+$sql = "INSERT INTO User (firstname, lastname, email, username, password) 
+        VALUES ('$firstname', '$lastname', '$email', '$username', '$password')";
 
 if(mysqli_query($conn, $sql)){
     

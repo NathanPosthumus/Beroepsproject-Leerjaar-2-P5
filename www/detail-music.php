@@ -2,21 +2,21 @@
 
 session_start();
 
-if(!isset($_SESSION['role'])) {
-    header("location: login.php");
-    exit;
-}
+// if(!isset($_SESSION['role'])) {
+//     header("location: login.php");
+//     exit;
+// }
 
 include 'database.php';
 
 $music_id = $_GET['id'];
 
-$sql = "SELECT * FROM music WHERE id = $music_id";
+$sql = "SELECT * FROM Album WHERE id = $music_id";
 $result = mysqli_query($conn, $sql);
-$track = mysqli_fetch_assoc($result);
+$album = mysqli_fetch_assoc($result);
 
-if(!$track) {
-    echo "Track not found.";
+if(!$album) {
+    echo "Album not found.";
     exit;
 }
 
@@ -37,23 +37,40 @@ if(!$track) {
         <h1 class="dashboard-title">Music Details</h1>
         <br>
         <table>
-            <tr>
-                <th>Song Name</th>
-                <td><?php echo ($track['song_name']); ?></td>
-            </tr>
-            <tr>
-                <th>Release Date</th>
-                <td><?php echo ($track['release_date']); ?></td>
-            </tr>
-            <tr>
-                <th>Genre</th>
-                <td><?php echo ($track['genre']); ?></td>
-            </tr>
-            <tr>
-                <th>Singer</th>
-                <td><?php echo ($track['singer']); ?></td>
-            </tr>
-        </table>
+    <tr>
+        <th>Title</th>
+        <td><?php echo $album['title']; ?></td>
+    </tr>
+    <tr>
+        <th>Artist</th>
+        <td><?php echo $album['artist']; ?></td>
+    </tr>
+    <tr>
+        <th>Genre</th>
+        <td><?php echo $album['genre']; ?></td>
+    </tr>
+    <tr>
+        <th>Release Year</th>
+        <td><?php echo $album['release_year']; ?></td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td><?php echo $album['price']; ?></td>
+    </tr>
+    <tr>
+        <th>Tracks</th>
+        <td><?php echo $album['tracks']; ?></td>
+    </tr>
+    <tr>
+        <th>Image</th>
+        <td><?php echo $album['image']; ?></td>
+    </tr>
+    <tr>
+        <th>Added At</th>
+        <td><?php echo $album['added_at']; ?></td>
+    </tr>
+</table>
+
     </div>
 </body>
 </html>
