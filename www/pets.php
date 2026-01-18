@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['role'])) {
+    header("location: login.php");
+    exit;
+}
+
 include 'database.php';
 
 $result = mysqli_query($conn, "SELECT * FROM pets");

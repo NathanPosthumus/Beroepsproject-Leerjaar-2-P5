@@ -18,10 +18,10 @@
 
         <button onclick="location.href='logout.php'">Logout</button>
 
-        <?php if ($_SESSION['role'] === 'worker'): ?>
+        <?php if ($_SESSION['role'] === 'Employee'): ?>
 
             <button onclick="location.href='admin-dashboard.php'">Admin Dashboard</button>
-            <button onclick="location.href='add_album.php'">Add album</button>
+            <button onclick="location.href='add_pet.php'">Add pet</button>
 
         <?php endif; ?>
 
@@ -34,6 +34,21 @@
             }
 
         ?>
+        <p>Je zit al <span id="timer">0</span> seconden op deze pagina.</p>
 
     <?php endif; ?>
 </nav>
+
+<script>
+let seconds = 0;
+
+
+  if (0 === 0) {
+    interval = setInterval(() => {
+      seconds++;
+      document.getElementById("timer").textContent = seconds;
+    }, 1000);
+  }
+
+
+</script>

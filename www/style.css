@@ -205,8 +205,14 @@ button:hover, .btn:hover {
 }
 
 
-p{
+.introduction{
     align-items: center;
     text-align: center;
     width: 30rem;
+}
+
+p{
+    align-items: center;
+    text-align: center;
+    width: 19rem;
 }
