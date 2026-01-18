@@ -1,60 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style-nav.css">
-    <link rel="stylesheet" href="search.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Search</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
-<body class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 text-white/90">
-    <?php
+<body>
 
-    include 'nav.php';
-    ?>
+<?php include 'nav.php'; ?>
 
-    <div class="max-w-4xl mx-auto px-6 py-12 space-y-6">
-    <?php
-//validatie
-if(isset($_GET['zoekterm']) && trim($_GET['zoekterm']) !== ''){
-    
+<div>
+<?php
+if (isset($_GET['zoekterm']) && trim($_GET['zoekterm']) !== '') {
+
     $zoekterm = trim($_GET['zoekterm']);
 
-    require 'database.php';
-    $zoektermEscaped = mysqli_real_escape_string($conn, $zoekterm);
-    $sql = "SELECT * FROM Album WHERE title LIKE '$zoektermEscaped%'";
+    include 'database.php';
+    $sql = "SELECT * FROM Album WHERE title LIKE '$zoekterm%'";
     $result = mysqli_query($conn, $sql);
     $albums = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-    echo '<h1 class="text-3xl font-bold text-white">Zoekresultaten</h1>';
+    echo "<h1>Zoekresultaten</h1>";
 
     if (!empty($albums)) {
-        echo '<div class="space-y-4">';
-        foreach($albums as $album){
-            echo '<div class="bg-white/10 border border-white/10 rounded-xl shadow px-6 py-5 space-y-1">';
-            echo '<p class="text-xl font-semibold text-white">' . htmlspecialchars($album['title']) . '</p>';
-            echo '<p class="text-sm text-white/70">' . htmlspecialchars($album['artist']) . '</p>';
-            echo '<p class="text-sm text-white/70">' . htmlspecialchars($album['description']) . '</p>';
-            echo '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-white/80">';
-            echo '<span><strong>Genre:</strong> ' . htmlspecialchars($album['genre']) . '</span>';
-            echo '<span><strong>Jaar:</strong> ' . htmlspecialchars($album['release_year']) . '</span>';
-            echo '<span><strong>Prijs:</strong> ' . htmlspecialchars($album['price']) . '</span>';
-            echo '<span><strong>Tracks:</strong> ' . htmlspecialchars($album['tracks']) . '</span>';
-            echo '</div>';
-            echo '</div>';
+        foreach ($albums as $album) {
+            echo "<div>";
+            echo "<p>Title: " . $album['title'] . "</p>";
+            echo "<p>Artist: " . $album['artist'] . "</p>";
+            echo "<p>Description: " . $album['description'] . "</p>";
+            echo "<p>Genre: " . $album['genre'] . "</p>";
+            echo "<p>Jaar: " . $album['release_year'] . "</p>";
+            echo "<p>Prijs: " . $album['price'] . "</p>";
+            echo "<p>Tracks: " . $album['tracks'] . "</p>";
+            echo "</div><hr>";
         }
-        echo '</div>';
     } else {
-        echo '<p class="text-white/70">Geen resultaten gevonden voor <span class="font-semibold text-white">' . htmlspecialchars($zoekterm) . '</span>.</p>';
+        echo "<p>Geen resultaten gevonden voor '" . $zoekterm . "'</p>";
     }
-   
-}
-else{
-    echo '<p class="text-white/70">Voer een zoekterm in.</p>';
+
+} else {
+    echo "<p>Voer een zoekterm in.</p>";
 }
 ?>
-    </div>
+</div>
+
 </body>
 </html>
-
