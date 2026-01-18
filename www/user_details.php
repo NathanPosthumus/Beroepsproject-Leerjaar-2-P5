@@ -21,9 +21,9 @@ if (!$user) {
 <head>
 
     <meta charset="UTF-8">
-    <title>User Details</title>
+    <title>Project 7 - Pets - De Vrolijke Viervoeter</title>
     <link rel="stylesheet" href="style.css">
-    
+
 </head>
 <body>
 

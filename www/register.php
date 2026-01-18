@@ -5,7 +5,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Project 7 - Pets - De Vrolijke Viervoeter</title>
     <link rel="stylesheet" href="style.css">
 
 </head>

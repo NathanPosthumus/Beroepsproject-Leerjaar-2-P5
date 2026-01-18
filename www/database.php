@@ -1,14 +1,14 @@
 <?php
 
 $dbhost = 'mariadb';
-$dbname = 'music';
+$dbname = 'Pet_Shelter_DB';
 $dbuser = 'root';
 $dbpass = 'password';
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 if (!$conn) {
-    die("Connection failed");
+    echo "Connection failed: " . mysqli_connect_error();
 }
 
 ?>

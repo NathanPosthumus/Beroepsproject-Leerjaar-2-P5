@@ -17,6 +17,26 @@ body {
     color: #000;
     line-height: 1.5;
 }
+.index-image{
+    width: 30rem;
+    margin-top: 2rem;
+}
+
+img{
+    width: 10rem;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    margin-left: 0rem;
+}
+
+.spacer{
+    height: 2rem;
+    margin: 2rem ;
+}
+
 
 /* ===============================
    NAVIGATION
@@ -182,4 +202,11 @@ button:hover, .btn:hover {
     form, table, .stats-card {
         width: 90%;
     }
+}
+
+
+p{
+    align-items: center;
+    text-align: center;
+    width: 30rem;
 }

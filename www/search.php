@@ -5,7 +5,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>Search</title>
+    <title>Project 7 - Pets - De Vrolijke Viervoeter</title>
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -14,10 +14,8 @@
 <?php include 'nav.php'; ?>
 
 <form action="search_process.php" method="GET">
-    <p>
-        <label for="zoekterm">Zoek op album:</label><br>
-        <input type="text" id="zoekterm" name="zoekterm" placeholder="Zoek op album" required>
-    </p>
+    <label for="zoekterm">Zoek op naam</label>
+    <input type="text" name="zoekterm" id="zoekterm" placeholder="Zoek op naam">
     <button type="submit">Zoek!</button>
 </form>
 

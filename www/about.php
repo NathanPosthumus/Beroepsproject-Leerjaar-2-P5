@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>Project 5 - Music (about)</title>
+    <title>Project 7 - Pets - De Vrolijke Viervoeter</title>
     <link rel="stylesheet" href="style-about.css">
     <link rel="stylesheet" href="style.css">
 
@@ -14,25 +14,23 @@
     <?php include 'nav.php'; ?>
 
     <h1>About</h1>
-    <p>This is the about page for Project 5 - Music.</p>
+
 
     <p>
-        Deze website is gemaakt als een schoolproject. Het doel is eenvoudig:
-        u kunt hier uw favoriete liedjes opzoeken en meteen meer informatie
-        bekijken over die nummers. Of u nu nieuwsgierig bent naar de artiest,
-        het album of de achtergrond van een liedje, deze site helpt u snel
-        en overzichtelijk verder.
+        Deze website is gemaakt als een schoolproject voor een dierenasiel.
+        Het doel is eenvoudig: bezoekers kunnen hier dieren bekijken die op zoek
+        zijn naar een nieuw thuis en meer informatie lezen over hun achtergrond,
+        karakter en verzorging.
     </p>
 
     <p>
-        Daarnaast wil deze website laten zien hoe muziek en technologie
-        samenkomen. Het is niet alleen een plek om uw favoriete nummers
-        te vinden, maar ook een manier om meer te leren over de artiesten,
-        de verhalen achter de liedjes en hoe muziek ons dagelijks leven
-        beïnvloedt.
+        Daarnaast laat deze site zien hoe technologie kan helpen bij adoptie.
+        We willen het makkelijker maken om de juiste match te vinden en mensen
+        te informeren over adoptie, vrijwilligerswerk en hoe je het asiel kunt
+        ondersteunen.
     </p>
 
-    <img src="images/nwaalbumcover.jpg" alt="Album cover">
+    <img src="images/pet.jpg" alt="Album cover">
 
 </body>
 </html>

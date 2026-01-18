@@ -12,7 +12,7 @@ $music = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM Album"), MYSQLI_ASS
 <head>
 
     <meta charset="UTF-8">
-    <title>Statistics</title>
+    <title>Project 7 - Pets - De Vrolijke Viervoeter</title>
     <link rel="stylesheet" href="style.css">
 
 </head>

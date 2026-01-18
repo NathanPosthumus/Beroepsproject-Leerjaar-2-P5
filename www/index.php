@@ -5,7 +5,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>Project 5 - Music - De Notenkraker</title>
+    <title>Project 7 - Pets - De Vrolijke Viervoeter</title>
     <link rel="icon" href="images/favicon.jpg">
     <link rel="stylesheet" href="style.css">
 
@@ -14,13 +14,16 @@
 
     <?php include 'nav.php'; ?>
 
-    <h1>Discover, Manage, and Enjoy Music</h1>
-    <p>Blader door onze collectie, bekijk details van albums en beheer je bibliotheek.</p>
+    <h1>Project 7: Pet Shelter</h1>
+    <p>Blader door onze collectie, bekijk details van pets.</p>
 
     <p>
 
-        <a href="music.php">Bekijk muziek</a> 
+        <a href="pets.php">Bekijk pets</a> 
+        <br>
         <a href="about.php">Meer over het project</a>
+        <br>
+        <img class="index-image" src="images/index.jpg" alt="">
 
     </p>
 

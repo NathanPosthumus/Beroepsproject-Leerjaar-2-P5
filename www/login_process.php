@@ -16,12 +16,15 @@ $password = $_POST['password'];
 
 include 'database.php';
 
-$sql = "SELECT * FROM User WHERE username = '$username'";
+$sql = "SELECT * FROM users WHERE username = '$username'";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
 
-if ($user && $password == $user['password']) {
+if ($password == $user['password']) {
     $_SESSION['role'] = $user['role'];
+    $_SESSION['firstname'] = $user['firstname'];
+    $_SESSION['lastname'] = $user['lastname'];
+    $_SESSION['email'] = $user['email'];
     $_SESSION['username'] = $user['username'];
     header("Location: dashboard.php");
     exit;

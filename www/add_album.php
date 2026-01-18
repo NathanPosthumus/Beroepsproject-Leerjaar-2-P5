@@ -14,7 +14,7 @@ require 'database.php';
 <head>
 
     <meta charset="UTF-8">
-    <title>Admin - Album toevoegen</title>
+    <title>Project 7 - Pets - De Vrolijke Viervoeter</title>
     <link rel="stylesheet" href="style-nav.css">
     <link rel="stylesheet" href="style.css">
 
