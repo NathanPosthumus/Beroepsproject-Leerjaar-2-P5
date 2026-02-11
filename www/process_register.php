@@ -35,7 +35,7 @@ $password = $_POST['password'];
 
 include 'database.php';
 
-$sql = "INSERT INTO User (firstname, lastname, email, username, password)
+$sql = "INSERT INTO users (firstname, lastname, email, username, password)
         VALUES ('$firstname', '$lastname', '$email', '$username', '$password')";
 
 if (mysqli_query($conn, $sql)) {
