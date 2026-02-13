@@ -1,5 +1,5 @@
 <?php
-
+// Database configuration - verbinden met de database
 $dbhost = 'mariadb';
 $dbname = 'Tandarts_DB';
 $dbuser = 'root';
