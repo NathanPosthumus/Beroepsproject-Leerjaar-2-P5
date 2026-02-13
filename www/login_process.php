@@ -1,33 +1,16 @@
 <?php
 session_start();
 
-if (isset($_SESSION['role'])) {
-    header("Location: dashboard.php");
+
+if (!isset($_POST['email'], $_POST['password'])) {
+    header('Location: login.php');
     exit;
-}
-
-if (!isset($_POST['username']) || !isset($_POST['password'])) {
-    header("Location: login.php");
-    exit;
-}
-
-
-
-if(
-    !isset(
-     
-        $_POST['username'],
-        $_POST['password'],
-    
-    )
-) {
-    die("Form data not submitted properly.");
 }
 
 // check of niks leeg is
 if(
     
-    empty($_POST['username']) ||
+    empty($_POST['email']) ||
     empty($_POST['password']) 
   
 ) {
@@ -37,23 +20,27 @@ if(
 
 
 
-$username = $_POST['username'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 
 include 'database.php';
 
-$sql = "SELECT * FROM users WHERE username = '$username'";
+$sql = "SELECT * FROM users WHERE email = '$email'";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
 
+if (!$user) {
+    header('Location: login.php');
+    exit;
+}
+
 if ($password == $user['password']) {
-    $_SESSION['role'] = $user['role'];
-    $_SESSION['firstname'] = $user['firstname'];
-    $_SESSION['lastname'] = $user['lastname'];
+    $_SESSION['id'] = $user['id'];
     $_SESSION['email'] = $user['email'];
-    $_SESSION['username'] = $user['username'];
     $_SESSION['password'] = $user['password'];
-    header("Location: dashboard.php");
+    $_SESSION['role'] = $user['role'];
+    $_SESSION['created_at'] = $user['created_at'];
+    header("Location: index.php");
     exit;
 }
 

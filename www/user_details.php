@@ -21,7 +21,7 @@ if (!$user) {
 <head>
 
     <meta charset="UTF-8">
-    <title>Project 7 - Pets - De Vrolijke Viervoeter</title>
+    <title>User Details</title>
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -46,6 +46,8 @@ if (!$user) {
         <td><?php echo $user['role']; ?></td>
     </tr>
 </table>
+
+<?php include 'footer.php'; ?>
 
 </body>
 </html>

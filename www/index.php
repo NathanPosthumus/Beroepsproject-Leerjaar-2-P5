@@ -1,12 +1,9 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
     <meta charset="UTF-8">
-    <title>Project 7 - Pets - De Vrolijke Viervoeter</title>
-    <link rel="icon" href="images/favicon.jpg">
+    <title>Ontwikkeling van een Online Tandarts Platform</title>
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -14,19 +11,22 @@
 
     <?php include 'nav.php'; ?>
 
-    <h1>Project 7: Pet Shelter</h1>
-    <p>Blader door onze collectie, bekijk details van pets.</p>
+    <div class="background"></div>
+
+    <h1>Ontwikkeling van een Online Tandarts Platform</h1>
+    <p>Blader door onze collectie, bekijk details van dieren.</p>
 
     <p>
 
-        <a href="pets.php">Bekijk pets</a> 
+
         <br>
         <a href="about.php">Meer over het project</a>
         <br>
-        <img class="index-image" src="images/index.jpg" alt="">
+        <img class="index-image" src="images/tandarts.jpg" alt="">
 
     </p>
 
+    <?php include 'footer.php'; ?>
 
 </body>
 </html>

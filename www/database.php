@@ -1,7 +1,7 @@
 <?php
 
 $dbhost = 'mariadb';
-$dbname = 'Pet_Shelter_DB';
+$dbname = 'Tandarts_DB';
 $dbuser = 'root';
 $dbpass = 'password';
 

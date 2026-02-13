@@ -1,54 +1,55 @@
 <nav>
-    <ul>
+<?php
+include 'database.php';
 
-        <li><a href="index.php">[ De Vrolijke Viervoeter ]</a></li>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="about.php">About</a></li>
-        <li><a href="pets.php">Pets</a></li>
-        <li><a href="search.php">Search</a></li>
+if (isset($_SESSION['email'])) {
+    $sql = "SELECT booked FROM users WHERE email='" . $_SESSION['email'] . "'";
+    $result = mysqli_query($conn, $sql);
+    $user = mysqli_fetch_assoc($result);
+}
+?>
 
-    </ul>
+<ul>
+    <li class="css-header-nav"><a href="index.php">Online Tandarts Platform</a></li>
+    <li><a href="index.php">Home</a></li>
+    <li><a href="about.php">About</a></li>
+    <li><a href="educatief_materiaal.php">Educatief Materiaal</a></li>
 
-    <?php if (!isset($_SESSION['role'])): ?>
+    <!-- // Alleen tonen als er geen sessie is (niet ingelogd) -->
+<?php if (!isset($_SESSION['role'])): ?>
 
-        <button onclick="location.href='register.php'">Sign up</button>
-        <button onclick="location.href='login.php'">Login</button>
+    <li><a href="register.php">Sign up</a></li>
+    <a href="login.php"><li class="login-button-css"> Login</li></a>
 
-    <?php else: ?>
+<?php else: ?>
 
-        <button onclick="location.href='logout.php'">Logout</button>
+    <li><a href="logout.php">Logout</a></li>
 
-        <?php if ($_SESSION['role'] === 'Employee'): ?>
+    <?php if ($_SESSION['role'] === 'patient'): ?>
+        <li><a href="tandarts_lijst.php">tandarts Lijst</a></li>
+        <li><a href="patient-dashboard.php">Patient Dashboard</a></li>
 
-            <button onclick="location.href='admin-dashboard.php'">Admin Dashboard</button>
-            <button onclick="location.href='add_pet.php'">Add pet</button>
+        <?php if ($booked === false) { ?>
+            <li><a href="book_appointment.php">Book Appointment</a></li>
+        <?php } ?>
 
-        <?php endif; ?>
-
-        <button onclick="location.href='stats.php'">Stats</button>
-
-        <?php
-
-            if(isset($_SESSION['firstname'])) {
-                echo 'Welcome, ' . $_SESSION['firstname'] . '!';
-            }
-
-        ?>
-        <p>Je zit al <span id="timer">0</span> seconden op deze pagina.</p>
-
+        <?php if ($booked === true) { ?>
+            <li><a href="booked_appointments.php">Booked Appointments</a></li>
+        <?php } ?>
     <?php endif; ?>
+
+    <?php if ($_SESSION['role'] === 'dentist'): ?>
+        <li><a href="patienten_lijst.php">patienten lijst</a></li>
+        <li><a href="tandarts-dashboard.php">Dentist Dashboard</a></li>
+        <li><a href="ingepland_afspraken.php">Ingepland Afspraken</a></li>
+    <?php endif; ?>
+
+    <!-- <?php
+        if(isset($_SESSION['email'])) {
+            echo '<li>Welcome, ' . $_SESSION['email'] . '!</li>';
+        }
+    ?> -->
+
+<?php endif; ?>
+</ul>
 </nav>
-
-<script>
-let seconds = 0;
-
-
-  if (0 === 0) {
-    interval = setInterval(() => {
-      seconds++;
-      document.getElementById("timer").textContent = seconds;
-    }, 1000);
-  }
-
-
-</script>

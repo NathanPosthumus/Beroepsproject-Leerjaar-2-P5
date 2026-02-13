@@ -1,218 +1,474 @@
-/* ===============================
-   RESET & BODY
-   =============================== */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+html {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* Hide scrollbar but keep scrolling enabled */
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
-body {
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins, sans-serif;
+}
+
+body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background: #f5f5f5;
-    color: #000;
-    line-height: 1.5;
-}
-.index-image{
-    width: 30rem;
-    margin-top: 2rem;
+    overflow: visible;
+    position: relative; /* positioning context for any absolute children */
+    color: #0f172a;
+    line-height: 1.55;
 }
 
-img{
-    width: 10rem;
+/* Global background for every page (no HTML changes needed) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(33, 158, 188, 0.35);
+    z-index: -2;
 }
 
-.filter-container {
-    display: flex;
-    justify-content: center;
-    margin-left: 0rem;
+/* Hide the old decorative layers if they exist on a page */
+.foreground {
+    display: none;
 }
 
-.spacer{
-    height: 2rem;
-    margin: 2rem ;
+.background {
+    display: none;
 }
 
+html::-webkit-scrollbar {
+    display: none;
+}
 
-/* ===============================
-   NAVIGATION
-   =============================== */
+/* SIMPLE PRO BASE STYLES */
+
+:root {
+    --brand: #219ebc;
+    --text: #0f172a;
+    --muted: rgba(15, 23, 42, 0.7);
+    --card: rgba(255, 255, 255, 0.88);
+    --border: rgba(0, 0, 0, 0.10);
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    --radius: 14px;
+}
+
+/* Give pages breathing room without needing extra classes */
+body > * {
+    width: min(1100px, calc(100% - 2.5rem));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Allow background layers and the full-width footer to span the viewport */
+.background,
+.foreground,
+.site-footer {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Keep nav aligned nicely while still letting it be full width */
 nav {
     width: 100%;
-    display: flex;
-    justify-content: center; /* center all nav content */
-    align-items: center;
-    gap: 2rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 2rem;
-    flex-wrap: wrap; /* allow wrapping on small screens */
+    margin-left: 0;
+    margin-right: 0;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    padding: 0;
-    margin: 0;
+main,
+section,
+article {
+    display: block;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-nav .nav-button {
-    padding: 0.4rem 0.8rem;
-    border: 1px solid #000;
-    background: none;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-nav .nav-button:hover {
-    background: #e0e0e0;
-}
-
-/* ===============================
-   HEADINGS
-   =============================== */
 h1, h2, h3 {
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
     text-align: center;
-    margin-bottom: 1rem;
-    font-weight: bold;
 }
 
-/* ===============================
-   FORMS
-   =============================== */
+h2 {
+    font-size: 1.4rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+p {
+    color: var(--muted);
+    margin-bottom: 0.9rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    transition: border-bottom-color 1s ease, color 1s ease;
+}
+
+a:hover {
+    color: var(--brand);
+    border-bottom-color: var(--brand);
+}
+
+/* Card-like blocks for common content (works with many pages without classes) */
+form,
+table,
+.introduction {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+form button,
+form input[type="submit"] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.introduction {
+    padding: 1rem 1.1rem;
+}
+
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    width: 300px;
-    margin-bottom: 2rem;
+    padding: 1.1rem;
+    margin: 1rem 0;
+    width: min(100%, 520px);
+    margin-left: auto;
+    margin-right: auto;
 }
 
-form label {
-    font-weight: bold;
-    font-size: 0.9rem;
+/* Some pages put multiple small forms under each other (appointment choose forms).
+   Keep them comfortably narrow even if inline styles try to stretch them. */
+form[method="POST"] {
+    max-width: none;
 }
 
-form input, form select, form textarea, form button {
-    padding: 0.5rem;
-    font-size: 1rem;
+label {
+    display: block;
+    font-weight: 600;
+    margin: 0.65rem 0 0.35rem;
+    color: rgba(15, 23, 42, 0.9);
 }
 
-form button {
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.95);
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: rgba(33, 158, 188, 0.65);
+    box-shadow: 0 0 0 4px rgba(33, 158, 188, 0.16);
+}
+
+button,
+input[type="submit"] {
+    appearance: none;
+    border: 0;
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
     cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
 }
 
-/* ===============================
-   TABLES
-   =============================== */
+button:hover,
+input[type="submit"]:hover {
+    filter: brightness(0.95);
+}
+
+button:active,
+input[type="submit"]:active {
+    transform: translateY(1px);
+}
+
 table {
-    width: 90%;
-    max-width: 800px;
+    width: min(60%, 1100px);
+    margin-left: auto !important;
+    margin-right: auto !important;
     border-collapse: collapse;
-    margin-bottom: 2rem;
+    table-layout: fixed;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+th,
+td {
+    padding: 0.85rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     text-align: left;
 }
 
-table th, table td {
-    border: 1px solid #ccc;
-    padding: 0.5rem 0.8rem;
+th {
+    background: rgba(33, 158, 188, 0.08);
+    color: rgba(15, 23, 42, 0.9);
+    font-weight: 800;
 }
 
-table th {
-    font-weight: bold;
+tr:hover td {
+    background: rgba(255, 255, 255, 0.55);
 }
 
-/* ===============================
-   CONTAINER WRAPPERS
-   =============================== */
-.container {
-    width: 90%;
-    max-width: 800px;
+/* Small utility for pages that place content directly in <p> blocks */
+hr {
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin: 1.25rem 0;
+}
+
+/* Make footer stick to the bottom on short pages */
+body > :not(.site-footer) {
+    flex: 0 0 auto;
+}
+
+/* FOOTER */
+
+.site-footer {
+    margin-top: auto;
+    padding: 2rem 1.5rem;
+    background: rgba(33, 158, 188, 0.12);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(6px);
+}
+
+
+
+.site-footer__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.site-footer__brand {
+    margin-bottom: 1.5rem;
+}
+
+.site-footer__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.site-footer__subtitle {
+    margin-top: 0.3rem;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.site-footer__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.site-footer__heading {
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.site-footer__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.site-footer__list a {
+    color: rgba(0, 0, 0, 0.85);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    transition: border-bottom-color 1s ease, color 1s ease;
+}
+
+.site-footer__list a:hover {
+    color: #219ebc;
+    border-bottom-color: #219ebc;
+}
+
+.site-footer__list--inline {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.site-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.site-footer__meta {
+    display: flex;
+    gap: 0.5rem;
     align-items: center;
 }
 
-/* ===============================
-   STATISTICS / INFO CARDS
-   =============================== */
-.stats-card {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.site-footer__meta a {
+    color: rgba(0, 0, 0, 0.75);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    transition: border-bottom-color 1s ease, color 1s ease;
+}
+
+.site-footer__meta a:hover {
+    color: #219ebc;
+    border-bottom-color: #219ebc;
+}
+
+@media (max-width: 800px) {
+    .site-footer__cols {
+        grid-template-columns: 1fr;
+    }
+}
+
+.login-button-css{
+    background-color: #219ebc;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-bottom: 0px solid transparent;
+    
+}
+
+.login-button-css:hover {
+    background-color: #ffffff;
+    border-bottom: 0px solid transparent;
+}
+
+.login-button-css a {
+    border-bottom: 0px solid transparent;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.spacer {
     margin-bottom: 2rem;
 }
 
-.stats-card div {
+nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 20px;
+    margin-left: 10px; 
 }
 
-/* ===============================
-   BUTTONS
-   =============================== */
-button, .btn {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border: 1px solid #000;
-    background: none;
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    padding: 0;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    font-size: 1rem;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    transition: border-bottom-color 0.2s ease, color 0.2s ease;
+}
+
+nav ul a:hover {
+    border-bottom-color: #219ebc;
+}
+
+
+
+nav li {
+    list-style: none;
+    display: block;
+    
+}
+
+.css-header-nav {
+    display: block;
+    margin-right: auto;
+    font-size: 20px;
     font-weight: bold;
 }
 
-button:hover, .btn:hover {
-    background: #e0e0e0;
+.css-header-nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 2rem;
 }
 
-/* ===============================
-   CENTER ELEMENTS
-   =============================== */
-.centered {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/* INDEX CSS */
 
-/* ===============================
-   MEDIA QUERIES
-   =============================== */
-@media (max-width: 600px) {
-    nav ul {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-    }
-
-    form, table, .stats-card {
-        width: 90%;
-    }
+.background {
+    background-color: #219ebc;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.5;
 }
 
 
-.introduction{
-    align-items: center;
-    text-align: center;
-    width: 30rem;
-}
 
-p{
-    align-items: center;
-    text-align: center;
-    width: 19rem;
+.foreground {
+    background-color: white;
+    width: 60%;
+    height: 60%;
+    position: absolute;
+    margin-top: 10rem;
+    margin-left: 10rem;
+    z-index: -1;
+    border-radius: 20rem;
+    filter: blur(100px);
+    overflow: hidden;
+    opacity: 0.5;
 }

@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +13,8 @@
 
 <form action="login_process.php" method="POST">
     <p>
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required>
+        <label for="email">email:</label><br>
+        <input type="text" id="email" name="email" required>
     </p>
 
     <p>
@@ -26,6 +24,8 @@
 
     <button type="submit">Submit</button>
 </form>
+
+<?php include 'footer.php'; ?>
 
 </body>
 </html>
