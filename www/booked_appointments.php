@@ -57,8 +57,8 @@ $appointments = mysqli_fetch_all($result_appointments, MYSQLI_ASSOC);
 
         <table border="1" style="margin-bottom:10px;">
             <tr>
-                <td><b>Date:</b> <?php echo $row['appointment_date']; ?></td>
-                <td><b>Time:</b> <?php echo $row['appointment_time']; ?></td>
+                <td><b>Date:</b> <?php echo $a['appointment_date']; ?></td>
+                <td><b>Time:</b> <?php echo $a['appointment_time']; ?></td>
                 <td><b>Booked by:</b> <?php echo $user_email; ?></td>
             </tr>
         </table>

@@ -2,6 +2,7 @@
 session_start();
 include "database.php";
 
+//login check
 if (!isset($_SESSION['email'])) {
     echo 'Not logged in';
     exit;
@@ -45,19 +46,21 @@ if (!$user) {
 <p>Password: <?php echo $_SESSION['password'] ?? ''; ?></p>
 <p>Verzekering(s): <?php echo $_SESSION['verzekerings'] ?? ''; ?></p>
 
+<!-- geen waarde ( ?? '') toon dan niks om te verkomen dat de user errors krijgt -->
+
 <hr>
 
 <h3>Update Info</h3>
 
 <form method="POST" action="patient-info-update.php">
     <label>Email:</label><br>
-    <input type="email" name="email" value="<?php echo $user['email']; ?>"><br><br>
+    <input type="email" name="email" placeholder="vul je nieuwe email in"><br><br>
 
     <label>New Password:</label><br>
-    <input type="password" name="password"><br><br>
+    <input type="password" name="password" placeholder="vul je nieuwe wachtwoord in"><br><br>
 
     <label>New Verzekering(s):</label><br>
-    <input type="text" name="verzekerings" value="<?php echo $user['verzekerings']; ?>"><br><br>
+    <input type="text" name="verzekerings" placeholder="vul je nieuwe verzekering in"><br><br>
 
     <button type="submit" name="update">Update</button>
 </form>

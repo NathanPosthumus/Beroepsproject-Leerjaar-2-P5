@@ -56,7 +56,7 @@ if (!$tandarts) {
 
 <br>
 
-<a href="patienten_lijst.php">← Terug naar overzicht</a>
+<a href="tandarts_lijst.php">← Terug naar overzicht</a>
 
 
 <?php include 'footer.php'; ?>

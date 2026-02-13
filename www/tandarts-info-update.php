@@ -34,7 +34,7 @@ if (mysqli_query($conn, $sql)) {
     $_SESSION['email'] = $email;
     $_SESSION['password'] = $password;
 
-    header("Location: patient-dashboard.php");
+    header("Location: tandarts-dashboard.php");
     exit;
 
 } else {

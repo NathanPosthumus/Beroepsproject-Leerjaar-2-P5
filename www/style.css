@@ -121,7 +121,7 @@ img {
 }
 
 a {
-    color: var(--text);
+    color: var(--brand);
     text-decoration: none;
     border-bottom: 2px solid transparent;
     padding-bottom: 2px;

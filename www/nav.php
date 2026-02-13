@@ -23,32 +23,29 @@ if (isset($_SESSION['email'])) {
 
 <?php else: ?>
 
-    <li><a href="logout.php">Logout</a></li>
+    
 
     <?php if ($_SESSION['role'] === 'patient'): ?>
-        <li><a href="tandarts_lijst.php">tandarts Lijst</a></li>
+        <li><a href="tandarts_lijst.php">Tandarts Lijst</a></li>
         <li><a href="patient-dashboard.php">Patient Dashboard</a></li>
 
-        <?php if ($booked === false) { ?>
+        
             <li><a href="book_appointment.php">Book Appointment</a></li>
-        <?php } ?>
+      
 
-        <?php if ($booked === true) { ?>
+       
             <li><a href="booked_appointments.php">Booked Appointments</a></li>
-        <?php } ?>
+
     <?php endif; ?>
 
     <?php if ($_SESSION['role'] === 'dentist'): ?>
-        <li><a href="patienten_lijst.php">patienten lijst</a></li>
+        <li><a href="patienten_lijst.php">Patienten Lijst</a></li>
         <li><a href="tandarts-dashboard.php">Dentist Dashboard</a></li>
         <li><a href="ingepland_afspraken.php">Ingepland Afspraken</a></li>
     <?php endif; ?>
 
-    <!-- <?php
-        if(isset($_SESSION['email'])) {
-            echo '<li>Welcome, ' . $_SESSION['email'] . '!</li>';
-        }
-    ?> -->
+    <li class="login-button-css"><a href="logout.php">Logout</a></li>
+
 
 <?php endif; ?>
 </ul>
